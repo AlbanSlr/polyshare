@@ -1,9 +1,4 @@
 // This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -11,4 +6,46 @@ generator client {
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int       @id @default(autoincrement())
+  name      String
+  email     String    @unique
+  password  String
+  tags      Tag[]     @relation("UserTags")
+  chatRooms ChatRoom[] @relation("UserChatRooms")
+  messages  Message[]  @relation("UserMessages") // Added relation field
+}
+
+model Tag {
+  id     Int     @id @default(autoincrement())
+  name   String  @unique
+  users  User[]  @relation("UserTags")
+}
+
+model ChatRoom {
+  id        Int       @id @default(autoincrement())
+  name      String
+  users     User[]    @relation("UserChatRooms")
+  messages  Message[]
+  files     File[]
+}
+
+model Message {
+  id        Int       @id @default(autoincrement())
+  content   String
+  createdAt DateTime  @default(now())
+  user      User      @relation(fields: [userId], references: [id], name: "UserMessages")
+  userId    Int
+  chatRoom  ChatRoom  @relation(fields: [chatRoomId], references: [id])
+  chatRoomId Int
+}
+
+model File {
+  id        Int       @id @default(autoincrement())
+  name      String
+  url       String
+  chatRoom  ChatRoom  @relation(fields: [chatRoomId], references: [id])
+  chatRoomId Int
 }
