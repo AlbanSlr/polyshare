@@ -15,7 +15,7 @@ model User {
   password  String
   tags      Tag[]     @relation("UserTags")
   chatRooms ChatRoom[] @relation("UserChatRooms")
-  messages  Message[]  @relation("UserMessages") // Added relation field
+  messages  Message[]  @relation("UserMessages")
 }
 
 model Tag {
