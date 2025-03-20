@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
@@ -19,17 +19,17 @@ export function RegisterForm({
   className,
   ...props
 }: React.ComponentPropsWithoutRef<"div">) {
-    async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-        event.preventDefault();
-        const form = event.currentTarget;
-        const username = form.username.value;
-        const email = form.email.value;
-        const password = form.password.value;
-        const res = await register(username, email, password);
-        if(!res.success){
-            toast.error(res.error);
-        }
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const form = event.currentTarget;
+    const username = form.username.value;
+    const email = form.email.value;
+    const password = form.password.value;
+    const res = await register(username, email, password);
+    if (!res.success) {
+      toast.error(res.error);
     }
+  }
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>
       <Card>
@@ -42,14 +42,14 @@ export function RegisterForm({
         <CardContent>
           <form onSubmit={handleSubmit}>
             <div className="flex flex-col gap-6">
-                <div className="grid gap-2">
-                    <Label htmlFor="username">Nom d'utilisateur</Label>
-                    <Input
-                        id="username"
-                        type="text"
-                        placeholder="John Doe" required
-                    />
-                  </div>
+              <div className="grid gap-2">
+                <Label htmlFor="username">Nom d'utilisateur</Label>
+                <Input
+                  id="username"
+                  type="text"
+                  placeholder="John Doe" required
+                />
+              </div>
               <div className="grid gap-2">
                 <Label htmlFor="email">Email</Label>
                 <Input
