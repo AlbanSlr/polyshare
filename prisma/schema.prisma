@@ -16,6 +16,7 @@ model User {
   tags      Tag[]     @relation("UserTags")
   chatRooms ChatRoom[] @relation("UserChatRooms")
   messages  Message[]  @relation("UserMessages")
+  // TODO : liste des fichiers partagés
 }
 
 model Tag {
@@ -34,7 +35,7 @@ model ChatRoom {
 
 model Message {
   id        Int       @id @default(autoincrement())
-  content   String
+  content   String // TODO : mettre une limite de taille
   createdAt DateTime  @default(now())
   user      User      @relation(fields: [userId], references: [id], name: "UserMessages")
   userId    Int
@@ -48,4 +49,5 @@ model File {
   url       String
   chatRoom  ChatRoom  @relation(fields: [chatRoomId], references: [id])
   chatRoomId Int
+  // TODO : ajouter le id user
 }

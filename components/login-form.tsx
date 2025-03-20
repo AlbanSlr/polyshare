@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import Link from 'next/link';
 import { cn } from "@/lib/utils"
@@ -19,16 +19,16 @@ export function LoginForm({
   className,
   ...props
 }: React.ComponentPropsWithoutRef<"div">) {
-    async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-        event.preventDefault();
-        const form = event.currentTarget;
-        const email = form.email.value;
-        const password = form.password.value;
-        const res = await login(email, password);
-        if(!res.success){
-            toast.error(res.error);
-        }
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const form = event.currentTarget;
+    const email = form.email.value;
+    const password = form.password.value;
+    const res = await login(email, password);
+    if (!res.success) {
+      toast.error(res.error);
     }
+  }
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>
       <Card>
@@ -62,8 +62,8 @@ export function LoginForm({
             </div>
             <div className="mt-4 text-center text-sm">
               Vous n&apos;avez pas de compte ?{" "}
-              <Link href="/register" className="underline underline-offset-4">  
-                  Créer un compte
+              <Link href="/register" className="underline underline-offset-4">
+                Créer un compte
               </Link>
             </div>
           </form>
