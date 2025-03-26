@@ -2,8 +2,7 @@
 
 import * as React from "react";
 import { House, HardDrive, Users } from "lucide-react";
-
-import { useUser } from '@/lib/useUser';
+import { NavUser } from "./nav-user";
 
 import {
     Sidebar,
@@ -17,6 +16,7 @@ import {
     SidebarMenuItem,
     useSidebar,
 } from "@/components/ui/sidebar";
+
 
 // This is sample data
 const data = {
@@ -118,18 +118,6 @@ const data = {
     ],
 }
 
-interface NavUserProps {
-    user: any;
-}
-
-export function NavUser({ user }: NavUserProps) {
-    return (
-        <div>
-            {/* User info here */}
-            <span>{user?.name}</span>
-        </div>
-    );
-}
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
     // Note: I'm using state to show active item.
@@ -137,7 +125,6 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
     const [activeItem, setActiveItem] = React.useState(data.navMain[0])
     const [mails, setMails] = React.useState(data.mails)
     const { setOpen } = useSidebar()
-    const { user, isLoading, isError } = useUser()
 
     return (
         <Sidebar
@@ -204,7 +191,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                     </SidebarGroup>
                 </SidebarContent>
                 <SidebarFooter>
-                    <NavUser user={user} />
+                    <NavUser />
                 </SidebarFooter>
             </Sidebar>
         </Sidebar>

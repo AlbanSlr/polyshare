@@ -14,11 +14,16 @@ import { Label } from "@/components/ui/label"
 import Link from "next/link"
 import { toast } from "sonner"
 import { register } from '@/actions/register';
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 export function RegisterForm({
   className,
   ...props
 }: React.ComponentPropsWithoutRef<"div">) {
+  const router = useRouter();
+  const [isLoading, setIsLoading] = useState(false);
+
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const form = event.currentTarget;
@@ -26,8 +31,21 @@ export function RegisterForm({
     const email = form.email.value;
     const password = form.password.value;
     const res = await register(username, email, password);
-    if (!res.success) {
-      toast.error(res.error);
+    try {
+      const res = await register(username, email, password);
+      
+      if (res.success) {
+        toast.success("Compte créé avec succès!");
+        // Redirect to login page after successful registration
+        router.push('/login');
+      } else {
+        toast.error(res.error);
+      }
+    } catch (error) {
+      toast.error("Une erreur est survenue lors de l'inscription");
+      console.error(error);
+    } finally {
+      setIsLoading(false);
     }
   }
   return (

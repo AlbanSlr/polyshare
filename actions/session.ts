@@ -4,9 +4,9 @@ import { getSession } from '@/lib/session';
 export async function GET() {
     const session = await getSession();
 
-    if (!session.user) {
-        return NextResponse.json({ user: null }, { status: 401 });
+    if (session.user?.isLoggedIn) {
+        return NextResponse.json({ user: session.user });
     }
 
-    return NextResponse.json({ user: session.user });
+    return NextResponse.json({ user: null }, { status: 401 });
 }

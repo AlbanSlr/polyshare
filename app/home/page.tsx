@@ -13,9 +13,12 @@ import {
     SidebarProvider,
     SidebarTrigger,
 } from "@/components/ui/sidebar"
+import AuthGuard from "@/components/auth-guard";
 
-export default function Page() {
-    return (
+
+export default async function HomePage() {
+  return (
+    <AuthGuard>
         <SidebarProvider
             style={
                 {
@@ -50,5 +53,6 @@ export default function Page() {
                 </div>
             </SidebarInset>
         </SidebarProvider>
-    )
+    </AuthGuard>
+  );
 }

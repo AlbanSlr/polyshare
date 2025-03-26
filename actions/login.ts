@@ -20,6 +20,7 @@ export async function login(email : string, password : string) {
         id: user.id,
         username: user.name,
         email: user.email,
+        isLoggedIn: true,
     };
     await session.save();
     return {success: true};
