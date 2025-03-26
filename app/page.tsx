@@ -8,9 +8,10 @@ import {
   CardHeader, 
   CardTitle 
 } from "@/components/ui/card";
-import { Share2, Users, Lock, FileText, ArrowRight } from "lucide-react";
+import { Share2, Users, MessageSquare, ArrowRight } from "lucide-react";
 
 export default function Home() {
+
   return (
     <div className="flex min-h-screen flex-col items-center overflow-x-hidden w-full">
       {/* Header/Hero Section */}
@@ -37,15 +38,15 @@ export default function Home() {
         <section className="w-full py-24 sm:py-32 md:py-40">
           <div className="mx-auto flex max-w-3xl flex-col items-center justify-center gap-4 text-center">
             <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
-              Partagez vos fichiers <span className="text-primary">facilement</span> et <span className="text-primary">en toute sécurité</span>
+              Partagez vos fichiers et <span className="text-primary">discutez avec PoPS</span>
             </h1>
             <p className="max-w-[42rem] leading-normal text-muted-foreground sm:text-xl sm:leading-8">
-              PolyShare est une plateforme de partage de fichiers simple, rapide et sécurisée pour tous vos besoins personnels et professionnels.
+              PolyShare est une plateforme de partage de fichiers et de discussion pour les cours ou l'associatif à Polytech Paris-Saclay.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Link href="/register">
                 <Button size="lg" className="h-12">
-                  Commencer gratuitement
+                  Inscrivez-vous maintenant
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </Link>
@@ -71,22 +72,22 @@ export default function Home() {
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-muted-foreground">
-                  Téléchargez et partagez des fichiers de toutes tailles instantanément avec n'importe qui dans le monde.
+                  Téléchargez et partagez des fichiers de toutes tailles instantanément avec n'importe qui à Polytech.
                 </p>
               </CardContent>
             </Card>
             
             <Card className="border shadow-sm">
               <CardHeader>
-                <Lock className="h-10 w-10 text-primary mb-4" />
-                <CardTitle>Sécurité garantie</CardTitle>
+                <MessageSquare className="h-10 w-10 text-primary mb-4" />
+                <CardTitle>Communication optimale</CardTitle>
                 <CardDescription>
-                  Vos fichiers sont chiffrés et protégés en permanence.
+                  Discutez en temps réel avec votre classe, votre promotion ou un club.
                 </CardDescription>
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-muted-foreground">
-                  Nous utilisons un chiffrement de bout en bout pour garantir que seuls les destinataires autorisés peuvent accéder à vos fichiers.
+                  Créez des salons de discussion pour discuter de vos projets, poser des questions ou simplement discuter.
                 </p>
               </CardContent>
             </Card>
@@ -96,12 +97,12 @@ export default function Home() {
                 <Users className="h-10 w-10 text-primary mb-4" />
                 <CardTitle>Collaboration facile</CardTitle>
                 <CardDescription>
-                  Travaillez ensemble sur des projets en toute simplicité.
+                  Echangez avec des élèves des années supérieures.
                 </CardDescription>
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-muted-foreground">
-                  Créez des espaces de travail collaboratifs et partagez des fichiers avec votre équipe ou vos clients.
+                  Demandez de l'aide, partagez des ressources ou collaborez sur des projets avec des étudiants plus expérimentés.
                 </p>
               </CardContent>
             </Card>
@@ -115,13 +116,13 @@ export default function Home() {
               <CardHeader>
                 <CardTitle className="text-2xl text-center">Prêt à commencer avec PolyShare ?</CardTitle>
                 <CardDescription className="text-center text-lg">
-                  Créez un compte en quelques secondes et commencez à partager vos fichiers dès aujourd'hui.
+                  Créez un compte en quelques secondes et commencez à échanger dès aujourd'hui.
                 </CardDescription>
               </CardHeader>
               <CardFooter className="flex justify-center pb-8 pt-4">
                 <Link href="/register">
                   <Button size="lg" className="h-12">
-                    S'inscrire gratuitement
+                    S'inscrire maintenant
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
                 </Link>
