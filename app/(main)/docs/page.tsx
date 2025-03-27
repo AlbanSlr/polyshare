@@ -51,18 +51,7 @@ export default function Page() {
   };
 
   return (
-    <AuthGuard>
-      <SidebarProvider style={{ "--sidebar-width": "350px" } as React.CSSProperties}>
-        <AppSidebar />
-        <SidebarInset className="flex flex-col">
-          <header className="sticky top-0 flex shrink-0 items-center gap-2 border-b bg-background p-4 z-10">
-            <SidebarTrigger className="-ml-1" />
-            <Separator orientation="vertical" className="mr-2 h-4" />
-            <div className="flex-1">
-              <h1 className="text-xl font-semibold">Documents</h1>
-            </div>
-          </header>
-          
+    <>
           <div className="flex-1 p-6">
             <div className="mb-6">
               <h2 className="text-3xl font-semibold mb-2">Documents partagés</h2>
@@ -128,8 +117,6 @@ export default function Page() {
               </CardContent>
             </Card>
           </div>
-        </SidebarInset>
-      </SidebarProvider>
 
       {/* Dialog de confirmation déplacé en dehors pour éviter les problèmes de rendu */}
       <AlertDialog open={openDialog} onOpenChange={setOpenDialog}>
@@ -149,6 +136,6 @@ export default function Page() {
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>
-    </AuthGuard>
+      </>
   );
 }

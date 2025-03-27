@@ -24,6 +24,7 @@ const navItems = [
         title: "Accueil",
         url: "/home",
         icon: House,
+        description: "Tableau de bord principal"
     },
     {
         title: "Groupes",
@@ -56,16 +57,9 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
     };
 
     return (
-        <Sidebar
-            collapsible="icon"
-            className="overflow-hidden [&>[data-sidebar=sidebar]]:flex-row"
-            {...props}
-        >
-            {/* Sidebar icon principale */}
+
             <Sidebar
-                collapsible="none"
-                className="!w-[calc(var(--sidebar-width-icon)_+_1px)] border-r"
-            >
+            collapsible="icon">
                 <SidebarHeader>
                     <SidebarMenu>
                         <SidebarMenuItem>
@@ -73,16 +67,14 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                                 size="lg" 
                                 asChild 
                                 className="md:h-8 md:p-0" 
-                                onClick={() => handleNavigation(navItems[0])}
-                                isActive={pathname === "/home"}
                             >
                                 <a>
                                     <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
-                                        <House className="size-4" />
+                                        <span className="text-lg font-bold">P</span>
                                     </div>
                                     <div className="grid flex-1 text-left text-sm leading-tight">
-                                        <span className="truncate font-semibold">Accueil</span>
-                                        <span className="truncate text-xs">Tableau de bord principal</span>
+                                        <span className="truncate font-semibold">PolyShare</span>
+                                        <span className="truncate text-xs">Plateforme collaborative</span>
                                     </div>
                                 </a>
                             </SidebarMenuButton>
@@ -101,10 +93,10 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                                                 hidden: false,
                                             }}
                                             onClick={() => handleNavigation(item)}
-                                            isActive={activeItem?.url === item.url}
+                                            isActive={pathname.startsWith(item.url)}
                                             className="px-2.5 md:px-2"
                                         >
-                                            <item.icon />
+                                            <item.icon className="size-4" />
                                             <span>{item.title}</span>
                                         </SidebarMenuButton>
                                     </SidebarMenuItem>
@@ -116,7 +108,6 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                 <SidebarFooter>
                     <NavUser />
                 </SidebarFooter>
-            </Sidebar>
         </Sidebar>
     );
 }

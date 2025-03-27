@@ -1,0 +1,24 @@
+import AuthGuard from "@/components/auth-guard";
+import { AppSidebar } from "@/components/app-sidebar";
+import { SidebarProvider, SidebarInset, SidebarTrigger } from "@/components/ui/sidebar";
+
+export default function AppLayout({ children } : { children: React.ReactNode }) {
+  return (
+    <AuthGuard>
+        <SidebarProvider
+            style={
+                {
+                    "--sidebar-width": "350px",
+                } as React.CSSProperties
+            }
+            open={false}
+        >
+            <AppSidebar />
+                <header className="flex h-16 shrink-0 items-center gap-2 border-b w-full px-2 bg-background sm:hidden">
+                    <SidebarTrigger />
+                </header>
+                {children}
+        </SidebarProvider>
+    </AuthGuard>
+  )
+}
