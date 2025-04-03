@@ -42,4 +42,4 @@ Dans le cadre d'un environnement de développement, si sur Safari, aller dans li
 ```
 secure: process.env.NODE_ENV === 'production',
 ```
-Inversement sur un naivagateur Chromium
+Inversement sur un navigateur Chromium
